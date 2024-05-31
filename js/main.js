@@ -1,5 +1,12 @@
 let arrSoNguyen = [];
 
+// document.getElementById("nhapSoNguyen").onkeydown = function (event) {
+//   if (event.key === "Enter") {
+//     event.preventDefault();
+//     document.getElementById("nhapDuLieu").submit();
+//   }
+// };
+
 document.querySelector(".btn_nhapSo").onclick = function (event) {
   event.preventDefault();
   let soNguyen = document.getElementById("nhapSoNguyen").value;
