@@ -10,6 +10,9 @@ document.querySelector(".btn_nhapSo").onclick = function (event) {
     arrSoNguyen.push(SoNguyenNum);
   }
   //   document.getElementById(".nhapSoNguyenDiv").reset();
+  document.querySelector(
+    ".nhapSoNguyen>p"
+  ).innerHTML = `Mảng số: ${arrSoNguyen}`;
   console.log(typeof soNguyen);
   console.log(arrSoNguyen);
 };
@@ -94,18 +97,86 @@ document.querySelector(".btn_tangDan").onclick = function () {
 };
 
 // 8.TIM SO NGUYEN TO DAU TIEN TRONG MANG
+function kiemTraSoNguyenTo(num) {
+  if (num < 2) return false;
+  let soNguyenTo = true;
+
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      soNguyenTo = false;
+    }
+  }
+  return soNguyenTo;
+}
+
 document.querySelector(".btn_soNguyenToDauTien").onclick = function () {
   let soNguyenTo = -1;
 
   for (let i = 0; i < arrSoNguyen.length; i++) {
-    if ([1, 2, 3].includes(arrSoNguyen[i])) {
+    if ([2, 3].includes(arrSoNguyen[i])) {
       soNguyenTo = arrSoNguyen[i];
       break;
     }
-    for (let j = 2; j <= Math.sqrt(arrSoNguyen[i]); j++) {
-      if (arrSoNguyen[i] % j === 0) return;
-      else {
-      }
+    if (kiemTraSoNguyenTo(arrSoNguyen[i])) {
+      soNguyenTo = arrSoNguyen[i];
+      break;
     }
+  }
+  document.querySelector(
+    ".soNguyenToDauTien>p"
+  ).innerHTML = `Số nguyên tố đầu tiên là ${soNguyenTo}`;
+};
+
+// 9. NHAP MANG SO THUC, DEM SO NGUYEN
+
+document.querySelector(".btn_nhapSoThuc").onclick = function () {
+  let soThuc = document.querySelector(".soThuc").value;
+  if (soThuc !== "") {
+    arrSoNguyen.push(soThuc * 1);
+  }
+  console.log(arrSoNguyen);
+};
+
+document.querySelector(".btn_baoNhieuSoNguyen").onclick = function () {
+  let soNguyen = 0;
+  for (let i = 0; i < arrSoNguyen.length; i++) {
+    if (arrSoNguyen[i] === Math.floor(arrSoNguyen[i])) {
+      soNguyen += 1;
+    }
+  }
+  document.querySelector(
+    ".baoNhieuSoNguyen>p"
+  ).innerHTML = `Có ${soNguyen} số Nguyên`;
+};
+
+// 10. SO SANH SO LUONG SO DUONG VA SO LUONG SO AM
+
+document.querySelector(".btn_soSanhAmDuong").onclick = function () {
+  let soAm = 0;
+  let soDuong = 0;
+
+  for (let i = 0; i < arrSoNguyen.length; i++) {
+    if (arrSoNguyen[i] > 0) {
+      soDuong += 1;
+    } else if (arrSoNguyen[i] < 0) {
+      soAm += 1;
+    }
+  }
+  if (soAm === 0 && soDuong === 0)
+    return (document.querySelector(
+      ".soSanhAmDuong>p"
+    ).innerHTML = `Vui lòng nhập số vào mảng`);
+  if (soAm > soDuong) {
+    return (document.querySelector(
+      ".soSanhAmDuong>p"
+    ).innerHTML = `Số Âm nhiều hơn số Dương`);
+  } else if (soAm === soDuong) {
+    return (document.querySelector(
+      ".soSanhAmDuong>p"
+    ).innerHTML = `Số Âm bằng số Dương`);
+  } else {
+    return (document.querySelector(
+      ".soSanhAmDuong>p"
+    ).innerHTML = `Số Âm ít hơn Dương`);
   }
 };
