@@ -29,8 +29,7 @@ document.querySelector(".btn_tongSo").onclick = function (event) {
 document.querySelector(".btn_demSo").onclick = function () {
   let soDuong = 0;
   for (let i = 0; i < arrSoNguyen.length; i++) {
-    if (arrSoNguyen[i] <= 0) return;
-    else {
+    if (arrSoNguyen[i] >= 0) {
       soDuong += 1;
     }
   }
@@ -52,8 +51,7 @@ document.querySelector(".btn_nhoNhat").onclick = function () {
 document.querySelector(".btn_duongNhoNhat").onclick = function () {
   let arrDuong = [];
   for (let i = 0; i < arrSoNguyen.length; i++) {
-    if (arrSoNguyen[i] < 0) return;
-    else {
+    if (arrSoNguyen[i] > 0) {
       arrDuong.push(arrSoNguyen[i]);
     }
   }
