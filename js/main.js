@@ -1,11 +1,25 @@
 let arrSoNguyen = [];
 
-// document.getElementById("nhapSoNguyen").onkeydown = function (event) {
-//   if (event.key === "Enter") {
-//     event.preventDefault();
-//     document.getElementById("nhapDuLieu").submit();
-//   }
-// };
+document.getElementById("nhapSoNguyen").onkeydown = function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    let soNguyen = document.getElementById("nhapSoNguyen").value;
+    let SoNguyenNum = Number(soNguyen);
+    if (soNguyen === "" || isNaN(SoNguyenNum)) {
+      return;
+    } else {
+      arrSoNguyen.push(SoNguyenNum);
+    }
+    document.querySelector(
+      ".nhapSoNguyen>p"
+    ).innerHTML = `Mảng số: ${arrSoNguyen}`;
+    // CLEAR INPUT CONTENT
+    document.getElementById("nhapSoNguyen").value = "";
+
+    console.log(arrSoNguyen);
+  }
+  // event.preventDefault();
+};
 
 document.querySelector(".btn_nhapSo").onclick = function (event) {
   event.preventDefault();
@@ -16,10 +30,11 @@ document.querySelector(".btn_nhapSo").onclick = function (event) {
   } else {
     arrSoNguyen.push(SoNguyenNum);
   }
-  //   document.getElementById(".nhapSoNguyenDiv").reset();
   document.querySelector(
     ".nhapSoNguyen>p"
   ).innerHTML = `Mảng số: ${arrSoNguyen}`;
+  // CLEAR INPUT CONTENT
+  document.getElementById("nhapSoNguyen").value = "";
   console.log(typeof soNguyen);
   console.log(arrSoNguyen);
 };
@@ -27,16 +42,29 @@ document.querySelector(".btn_nhapSo").onclick = function (event) {
 // 1.TINH TONG CAC SO DUONG
 document.querySelector(".btn_tongSo").onclick = function (event) {
   event.preventDefault();
-  document.querySelector(".tongSoDuong>p").innerHTML = arrSoNguyen.reduce(
-    (a, b) => a + b
-  );
+  let tongSoDuong = 0;
+  for (let i = 0; i < arrSoNguyen.length; i++) {
+    if (arrSoNguyen[i] > 0) {
+      tongSoDuong += arrSoNguyen[i];
+    }
+    console.log(tongSoDuong);
+  }
+  if (tongSoDuong !== 0) {
+    document.querySelector(
+      ".tongSoDuong>p"
+    ).innerHTML = `Tổng các số dương là ${tongSoDuong}`;
+  } else {
+    document.querySelector(
+      ".tongSoDuong>p"
+    ).innerHTML = `Trong mảng không có số dương`;
+  }
 };
 
 // 2.DEM CO BAO NHIEU SO DUONG TRONG MANG
 document.querySelector(".btn_demSo").onclick = function () {
   let soDuong = 0;
   for (let i = 0; i < arrSoNguyen.length; i++) {
-    if (arrSoNguyen[i] >= 0) {
+    if (arrSoNguyen[i] > 0) {
       soDuong += 1;
     }
   }
@@ -127,12 +155,33 @@ document.querySelector(".btn_soNguyenToDauTien").onclick = function () {
       break;
     }
   }
-  document.querySelector(
-    ".soNguyenToDauTien>p"
-  ).innerHTML = `Số nguyên tố đầu tiên là ${soNguyenTo}`;
+  if (soNguyenTo === -1) {
+    document.querySelector(".soNguyenToDauTien>p").innerHTML = `-1`;
+  } else {
+    document.querySelector(
+      ".soNguyenToDauTien>p"
+    ).innerHTML = `Số nguyên tố đầu tiên là ${soNguyenTo}`;
+  }
 };
 
 // 9. NHAP MANG SO THUC, DEM SO NGUYEN
+
+document.querySelector(".soThuc").onkeydown = function (e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    let soThuc = document.querySelector(".soThuc").value;
+    let soThucNum = Number(soThuc);
+    if (soThuc === "" || isNaN(soThucNum)) return;
+    else {
+      arrSoNguyen.push(soThuc * 1);
+    }
+    document.querySelector(
+      ".soThucDiv>p"
+    ).innerHTML = `Mảng Số: ${arrSoNguyen}`;
+    // CLEAR INPUT CONTENT
+    document.querySelector(".soThuc").value = "";
+  }
+};
 
 document.querySelector(".btn_nhapSoThuc").onclick = function () {
   let soThuc = document.querySelector(".soThuc").value;
@@ -142,6 +191,8 @@ document.querySelector(".btn_nhapSoThuc").onclick = function () {
     arrSoNguyen.push(soThuc * 1);
   }
   document.querySelector(".soThucDiv>p").innerHTML = `Mảng Số: ${arrSoNguyen}`;
+  // CLEAR INPUT CONTENT
+  document.querySelector(".soThuc").value = "";
   console.log(arrSoNguyen);
   console.log(typeof soThucNum);
 };
