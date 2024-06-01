@@ -22,22 +22,25 @@
 
   <body>
     <div class="container">
-      <div class="nhapSoNguyen" id="nhapSoNguyenDiv">
-        <h2>Nhập Số Nguyên</h2>
-        <p></p>
-        <div class="mb-3">
-          <label for="" class="form-label">Nhập Số Nguyên Vào Ô Bên Dưới</label>
-          <input
-            type="text"
-            class="form-control w-50"
-            name=""
-            id="nhapSoNguyen"
-            placeholder="Nhập số nguyên"
-          />
+      <form id="nhapDuLieu">
+        <div class="nhapSoNguyen" id="nhapSoNguyenDiv">
+          <h2>Nhập Số Nguyên</h2>
+          <p></p>
+          <div class="mb-3">
+            <label for="" class="form-label"
+              >Nhập Số Nguyên Vào Ô Bên Dưới</label
+            >
+            <input
+              type="text"
+              class="form-control w-50"
+              name=""
+              id="nhapSoNguyen"
+              placeholder="Nhập số nguyên"
+            />
+          </div>
+          <button type="button" class="btn btn-dark btn_nhapSo">Nhập Số</button>
         </div>
-        <button type="button" class="btn btn-dark btn_nhapSo">Nhập Số</button>
-      </div>
-
+      </form>
       <div class="xuLyDuLieu d-flex">
         <div class="benTrai w-50 pe-2">
           <div class="tongSoDuong">
@@ -105,8 +108,15 @@
           </div>
           <div class="baoNhieuSoNguyen">
             <h3>9.Nhập Mảng Số Thực, Đếm Số Nguyên</h3>
-            <input class="soThuc" type="text" placeholder="Nhập thêm số thực" />
-            <button class="btn_nhapSoThuc">Nhập Số Thực</button>
+            <div class="soThucDiv">
+              <p></p>
+              <input
+                class="soThuc"
+                type="text"
+                placeholder="Nhập thêm số thực"
+              />
+              <button class="btn_nhapSoThuc">Nhập Số Thực</button>
+            </div>
             <p></p>
             <button class="btn_baoNhieuSoNguyen btn btn-dark">
               Đếm Số Nguyên

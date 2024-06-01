@@ -136,10 +136,14 @@ document.querySelector(".btn_soNguyenToDauTien").onclick = function () {
 
 document.querySelector(".btn_nhapSoThuc").onclick = function () {
   let soThuc = document.querySelector(".soThuc").value;
-  if (soThuc !== "") {
+  let soThucNum = Number(soThuc);
+  if (soThuc === "" || isNaN(soThucNum)) return;
+  else {
     arrSoNguyen.push(soThuc * 1);
   }
+  document.querySelector(".soThucDiv>p").innerHTML = `Mảng Số: ${arrSoNguyen}`;
   console.log(arrSoNguyen);
+  console.log(typeof soThucNum);
 };
 
 document.querySelector(".btn_baoNhieuSoNguyen").onclick = function () {
